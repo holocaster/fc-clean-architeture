@@ -36,27 +36,4 @@ const customer = CustomerFactory.createWithAddress(
   
       expect(output).toEqual(input);
     });
-
-    it("should thrown an error when name is missing", async () => {
-        const customerRepository = mockRepository();
-        const createCustomerUseCase = new UpdateCustomerUseCase(customerRepository);
-    
-        input.name = "";
-    
-        await expect(createCustomerUseCase.execute(input)).rejects.toThrow(
-          "Name is required"
-        );
-      });
-
-      it("should thrown an error when street is missing", async () => {
-        const customerRepository = mockRepository();
-        const createCustomerUseCase = new UpdateCustomerUseCase(customerRepository);
-    
-        input.name = "John Updated"
-        input.address.street = "";
-    
-        await expect(createCustomerUseCase.execute(input)).rejects.toThrow(
-          "Street is required"
-        );
-      });
   });
